@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
-import { wordSets } from "../data";
+import { wordSets, WordSet } from "../data";
 
 function GameContent() {
   const searchParams = useSearchParams();
@@ -10,8 +10,14 @@ function GameContent() {
   const [timer, setTimer] = useState(10);
   const [startTime, setStartTime] = useState(Date.now());
 
-  const [currentSet, setCurrentSet] = useState<number>(0);
+  // ランダムな問題を選ぶ関数
+  const getRandomSet = (sets: WordSet[]) => {
+    return Math.floor(Math.random() * sets.length);
+  };
+
   const wordSetsForDifficulty = wordSets[difficulty || "basic"];
+  // 初期表示時もランダムに問題を選択
+  const [currentSet, setCurrentSet] = useState<number>(() => getRandomSet(wordSetsForDifficulty));
   const wordSet = wordSetsForDifficulty[currentSet];
   const words: string[] = wordSet.words;
 
@@ -34,7 +40,8 @@ function GameContent() {
   };
 
   const handleNext = () => {
-    const nextSet = Math.floor(Math.random() * wordSetsForDifficulty.length);
+    // 次の問題もランダムに選択
+    const nextSet = getRandomSet(wordSetsForDifficulty);
     setCurrentSet(nextSet);
     setAnswer("");
   };
