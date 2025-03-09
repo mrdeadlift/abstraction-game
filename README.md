@@ -1,91 +1,91 @@
-# Abstraction Game
+# 抽象化ゲーム
 
-This is a web-based game application built with Next.js that challenges players' abstraction skills.
+これは Next.js で構築された、プレイヤーの抽象化スキルに挑戦するウェブベースのゲームアプリケーションです。
 
-## Features
+## 特徴
 
-- Interactive game interface
-- Real-time results and feedback
-- Responsive design for all devices
+- インタラクティブなゲームインターフェース
+- リアルタイムの結果とフィードバック
+- すべてのデバイスに対応したレスポンシブデザイン
 
-## Tech Stack
+## 技術スタック
 
-- [Next.js](https://nextjs.org) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Geist Font](https://vercel.com/font) - Modern font family
+- [Next.js](https://nextjs.org) - React フレームワーク
+- [TypeScript](https://www.typescriptlang.org/) - 型安全な JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - ユーティリティファーストの CSS フレームワーク
+- [Geist Font](https://vercel.com/font) - モダンなフォントファミリー
 
-## Getting Started
+## 始め方
 
-### Prerequisites
+### 前提条件
 
-- Node.js (v18 or higher)
-- npm (v9 or higher)
+- Node.js (v18 以上)
+- npm (v9 以上)
 
-### Installation
+### インストール
 
-1. Clone the repository
-2. Install dependencies:
+1. リポジトリをクローンする
+2. 依存関係をインストールする：
 
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+3. 環境変数を設定する：
 
-Create a `.env.local` file in the root directory with the following content:
+ルートディレクトリに`.env.local`ファイルを作成し、以下の内容を記入してください：
 
 ```env
 NEXT_PUBLIC_API_KEY=your_api_key_here
 ```
 
-4. Run the development server:
+4. 開発サーバーを起動する：
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+ブラウザで[http://localhost:3000](http://localhost:3000)を開いてください。
 
-## Project Structure
+## プロジェクト構造
 
 ```
 abstraction-game/
-├── public/            # Static assets
+├── public/            # 静的アセット
 ├── src/
-│   ├── app/           # Application pages
-│   │   ├── game/      # Game interface
-│   │   ├── result/    # Results display
-│   │   ├── data.ts    # Game data and logic
-│   │   └── ...        # Other pages and components
-├── tailwind.config.js # Tailwind CSS configuration
-└── ...                # Configuration files
+│   ├── app/           # アプリケーションページ
+│   │   ├── game/      # ゲームインターフェース
+│   │   ├── result/    # 結果表示
+│   │   ├── data.ts    # ゲームデータとロジック
+│   │   └── ...        # その他のページとコンポーネント
+├── tailwind.config.js # Tailwind CSS設定
+└── ...                # 設定ファイル
 ```
 
-## Data Management
+## データ管理
 
-Game data and logic are managed in `src/app/data.ts`. This file contains:
+ゲームデータとロジックは`src/app/data.ts`で管理されています。このファイルには以下が含まれています：
 
-- Game questions and answers
-- Scoring logic
-- Game state management
+- ゲームの質問と回答
+- スコアリングロジック
+- ゲーム状態管理
 
-## Deployment
+## デプロイ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js アプリをデプロイする最も簡単な方法は、Next.js の作成者による[Vercel プラットフォーム](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)を使用することです。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+詳細については、[Next.js デプロイメントドキュメント](https://nextjs.org/docs/app/building-your-application/deploying)をご覧ください。
 
-## Contributing
+## 貢献
 
-Contributions are welcome! Please follow these steps:
+貢献は歓迎します！以下の手順に従ってください：
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. プロジェクトをフォークする
+2. 機能ブランチを作成する（`git checkout -b feature/素晴らしい機能`）
+3. 変更をコミットする（`git commit -m '素晴らしい機能を追加'`）
+4. ブランチにプッシュする（`git push origin feature/素晴らしい機能`）
+5. プルリクエストを開く
 
-## License
+## ライセンス
 
-Distributed under the MIT License. See `LICENSE` for more information.
+MIT ライセンスの下で配布されています。詳細は`LICENSE`をご覧ください。
