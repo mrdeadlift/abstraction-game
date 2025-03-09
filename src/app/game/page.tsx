@@ -1,21 +1,36 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { wordSets } from "../data";
 
 function GameContent() {
   const searchParams = useSearchParams();
   const difficulty = searchParams.get("difficulty");
   const [answer, setAnswer] = useState("");
+  const [timer, setTimer] = useState(10);
+  const [startTime, setStartTime] = useState(Date.now());
 
   const [currentSet, setCurrentSet] = useState<number>(0);
-  const wordSetsForDifficulty = wordSets[difficulty || "easy"];
+  const wordSetsForDifficulty = wordSets[difficulty || "basic"];
   const wordSet = wordSetsForDifficulty[currentSet];
   const words: string[] = wordSet.words;
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(prev => prev - 0.1);
+    }, 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    setStartTime(Date.now());
+    setTimer(10);
+  }, [currentSet]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `/result?answer=${encodeURIComponent(answer)}&correct=${encodeURIComponent(wordSet.correctAnswer)}`;
+    const elapsedTime = (Date.now() - startTime) / 1000;
+    window.location.href = `/result?answer=${encodeURIComponent(answer)}&correct=${encodeURIComponent(wordSet.correctAnswer)}&time=${elapsedTime.toFixed(1)}`;
   };
 
   const handleNext = () => {
@@ -27,8 +42,13 @@ function GameContent() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-4xl font-bold mb-8">以下に共通することは？</h1>
-      <div className="mb-8">
-        <p className="text-lg">難易度: {difficulty}</p>
+      <div className="mb-4">
+        <p className="text-lg">モード: {difficulty === "basic" ? "例題" : "実践"}</p>
+        <div className="text-center mt-2">
+          <p className={`text-2xl font-bold ${timer <= 0 ? 'text-red-500' : ''}`}>
+            {timer > 0 ? `残り時間: ${timer.toFixed(1)}秒` : `タイムオーバー: ${timer.toFixed(1)}秒`}
+          </p>
+        </div>
         <div className="flex gap-4 mt-4">
           {words.map((word, i) => (
             <span key={i} className="!bg-white bg-opacity-100 px-4 py-2 rounded text-gray-900">
