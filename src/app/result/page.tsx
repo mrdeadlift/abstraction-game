@@ -16,7 +16,7 @@ export default function ResultPage() {
           <p className="text-lg">{userAnswer}</p>
         </div>
         <div>
-          <h2 className="text-xl font-semibold">正解例</h2>
+          <h2 className="text-xl font-semibold">回答例</h2>
           <p className="text-lg">{correctAnswer}</p>
         </div>
       </div>
