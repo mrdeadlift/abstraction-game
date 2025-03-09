@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function ResultPage() {
+function ResultContent() {
   const searchParams = useSearchParams();
   const userAnswer = decodeURIComponent(searchParams.get("answer") || "");
   const correctAnswer = decodeURIComponent(searchParams.get("correct") || "");
@@ -24,5 +25,13 @@ export default function ResultPage() {
         タイトルに戻る
       </Link>
     </main>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen flex-col items-center p-24">読み込み中...</div>}>
+      <ResultContent />
+    </Suspense>
   );
 }

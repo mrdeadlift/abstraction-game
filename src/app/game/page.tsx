@@ -1,9 +1,9 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { wordSets } from "../data";
 
-export default function GamePage() {
+function GameContent() {
   const searchParams = useSearchParams();
   const difficulty = searchParams.get("difficulty");
   const [answer, setAnswer] = useState("");
@@ -63,5 +63,13 @@ export default function GamePage() {
         </div>
       </form>
     </main>
+  );
+}
+
+export default function GamePage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen flex-col items-center p-24">読み込み中...</div>}>
+      <GameContent />
+    </Suspense>
   );
 }
